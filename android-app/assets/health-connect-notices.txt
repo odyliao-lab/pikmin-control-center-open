@@ -1,0 +1,6 @@
+Health Connect Android13 runtime dependencies
+Official AndroidX connect-client 1.1.0 and its fixed runtime graph are downloaded only from Google Maven/Maven Central; exact coordinates and SHA256 are recorded in scripts/health-connect-dependencies.lock.json in the private source repository.
+AndroidX, Kotlin, kotlinx.coroutines, Guava/failureaccess, Error Prone and J2ObjC annotations: Apache License 2.0, https://www.apache.org/licenses/LICENSE-2.0
+JSR305 annotations: BSD-style license, https://github.com/findbugsproject/findbugs/blob/master/findbugs/licenses/LICENSE-bsd.txt
+JetBrains annotations: Apache License 2.0, https://github.com/JetBrains/java-annotations
+Original libraries are unmodified. This is not official Pikmin Bloom Android13 support. No Google Fit identity or sensor origin is spoofed.

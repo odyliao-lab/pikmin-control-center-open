@@ -1,0 +1,3 @@
+# Keep Android shell assets in their source LF format.
+*.sh text eol=lf
+*.prop text eol=lf

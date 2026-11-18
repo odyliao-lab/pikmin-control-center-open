@@ -1,0 +1,12 @@
+/.tools/
+*.apk
+*.aab
+*.dex
+*.so
+*.zip
+*.jar
+*.aar
+*.jks
+*.keystore
+__pycache__/
+/local.properties

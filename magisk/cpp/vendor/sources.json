@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "components": [
+    {
+      "repository": "https://github.com/LSPosed/LSPlant.git",
+      "commit": "7217ac6f41e2bda549e4acb54e632abb03e5ccaf",
+      "path": "magisk/cpp/vendor/lsplant"
+    },
+    {
+      "repository": "https://github.com/LSPosed/DexBuilder.git",
+      "commit": "9d57844a301077abf4c29e061b2458c56a363c8f",
+      "path": "magisk/cpp/vendor/lsplant/external/dex_builder"
+    },
+    {
+      "repository": "https://github.com/greg7mdp/parallel-hashmap.git",
+      "commit": "65775fa09fecaa65d0b0022ab6bf091c0e509445",
+      "path": "magisk/cpp/vendor/lsplant/external/dex_builder/external/parallel_hashmap"
+    },
+    {
+      "repository": "https://github.com/jmpews/Dobby.git",
+      "commit": "21f07a5ce184cda9346afb8009c07fe7e47390d0",
+      "path": "magisk/cpp/vendor/dobby"
+    }
+  ]
+}

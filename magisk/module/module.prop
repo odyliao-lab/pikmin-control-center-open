@@ -1,0 +1,7 @@
+id=pikmin_nectar_rpc
+name=Pikmin Control Center Core
+version=1.21.1
+versionCode=147
+author=Ody Liao
+description=Unified Pikmin Bloom v157.0 automation and GPS Copy. GPS movement still requires the external JoyStick app.
+pccUnified=1

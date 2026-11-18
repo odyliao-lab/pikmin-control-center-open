@@ -1,0 +1,7 @@
+id=pcc_emulator_bridge_canary
+name=Pikmin Control Center MuMu Core (experimental)
+version=0.20.3
+versionCode=900178
+author=PikminControlCenter
+description=MuMu x64/API35 only. Login-confirmed NativeBridge loader with integrated v157 ARM business core. Not a phone release.
+pccUnified=1

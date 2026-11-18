@@ -1,0 +1,41 @@
+$ErrorActionPreference = 'Stop'
+$src = Join-Path (Split-Path $PSScriptRoot -Parent) 'src/dev/ody/pikmincontrol'
+$farm = Get-Content -Raw (Join-Path $src 'FlowerFarmService.java')
+$preservesRouteDispatch = $farm.Contains('"派遣診斷等待中".equals(routeDispatchCounts)') -and $farm.Contains('runReport.routeDispatchDiag=routeDispatchCounts')
+$gps = Get-Content -Raw (Join-Path $src 'GpsModuleGateway.java')
+$batch = Get-Content -Raw (Join-Path $src 'DispatchBatchService.java')
+$settings = Get-Content -Raw (Join-Path $src 'ControlSettings.java')
+$ui = Get-Content -Raw (Join-Path $src 'MainActivity.java')
+$checks = [ordered]@{
+    'No legacy arrival source in farm service' = !$farm.Contains('arrivalSnapshot(null)')
+    'Production native heartbeat path' = $gps.Contains('/nearby_gate_status.tsv')
+    'Native location required before planting' = $farm.Contains('FarmLocation initial = waitStartup();') -and $farm.IndexOf('FarmLocation initial = waitStartup();') -lt $farm.IndexOf('PlantingControlGateway.setEnabled(true)')
+    'No control writes on preflight failure' = $farm.Contains('if (controlsClaimed)')
+    'Startup cancellable and bounded' = $farm.Contains('gate.waiting(SystemClock.elapsedRealtime(), stopping)')
+    'Dispatch off before first teleport' = $farm.IndexOf('DispatchProbeGateway.setFarmArmed(false)') -lt $farm.IndexOf('GpsModuleGateway.flyTo')
+    'Arrival before dwell arming' = $farm.IndexOf('waitArrival(point, sessionPid') -lt $farm.IndexOf('DispatchProbeGateway.setFarmArmed(true)')
+    'First arrival before planting start' = $farm.IndexOf('waitArrival(point, sessionPid') -lt $farm.IndexOf('PlantingControlGateway.setEnabled(true)')
+    'Actual planting confirmation before dwell arming' = $farm.IndexOf('if (!waitPlanting())') -lt $farm.IndexOf('DispatchProbeGateway.setFarmArmed(true)')
+    'Planting start bounded' = $farm.Contains('PLANTING_START_WAIT_MS = 20_000L')
+    'Runtime planting checks in flight dwell and settling' = ([regex]::Matches($farm,'checkPlanting\(\);').Count -ge 5)
+    'No planting on first arrival timeout' = $farm.Contains('if (!plantingConfirmed) throw')
+    'Selected round count drives loop and remaining checkpoint total' = $farm.Contains('round <= requestedRounds') -and $farm.Contains('int total = checkpoint.remaining()') -and $farm.Contains('(round-1)*points.size()+pointIndex')
+    'Final report preserves the newest valid route dispatch counters' = $preservesRouteDispatch
+    'Round selection defaults to one and route is single trip' = $settings.Contains('getInt("flower_farm_rounds", 1)') -and $farm.Contains('route?1:ControlSettings.flowerFarmRounds(context)') -and $farm.Contains('getIntExtra("rounds", 1)')
+    'Round UI offers one or two and disables editing during work' = $ui.Contains('new String[]{"1 輪", "2 輪"}') -and $ui.Contains('flowerFarmRounds.setEnabled(ui.canEdit)')
+    'Farm original state saved before control write' = $farm.IndexOf('NearbyWorkState.capture') -lt $farm.IndexOf('DispatchProbeGateway.setFarmArmed(false)')
+    'Restore requires successful cleanup in both workers' = $farm.Contains('if (controlsClaimed && errors.length() == 0)') -and $batch.Contains('if (controlsClaimed && errors.length() == 0)') -and $batch.Contains('NearbyWorkState.restore')
+    'Report closes before nearby is restored' = $farm.IndexOf('runReport.closeWindow(System.currentTimeMillis())') -lt $farm.IndexOf('NearbyWorkState.restore')
+    'Bounded arrival retained' = $farm.Contains('ARRIVAL_WAIT_MS = 45_000L')
+    'Separate route and stationary startup branches' = ([regex]::Matches($farm,'PlantingControlGateway.setEnabled\(true\)').Count -eq 2) -and $farm.Contains('if(routeMode){runRoute(points,sessionPid);return;}')
+    'Cleanup Stop and explicit leased takeover' = $farm.Contains('PlantingControlGateway.setEnabled(false)') -and $farm.Contains('routeSession.open(recoveryConsent)') -and $farm.Contains('new RouteState.StopGate()')
+    'Dwell cleanup finally' = $farm -match 'finally\s*\{\s*DispatchProbeGateway\.setFarmArmed\(false\);'
+    'Dwell monitors accepted epoch' = $farm.Contains('arrived.epoch != fix.epoch')
+    'GPS lock still acquired and released' = $farm.Contains('GpsWorkLock.acquire') -and $farm.Contains('GpsWorkLock.release')
+    'No JoyStick STOP added' = !$farm.Contains('stopFlight(')
+    'Read subprocess bounded' = $gps.Contains('process.waitFor(3000,')
+    'Route freshness uses post-read clock and progress uses actual provider fixes' = $farm -match 'FarmLocation fix=observation.location;\s*//[^\r\n]*\r?\n\s*//[^\r\n]*\r?\n\s*long verifiedAt=SystemClock.elapsedRealtime\(\);' -and $farm.Contains('fix.fresh(System.currentTimeMillis(),verifiedAt)') -and $farm.Contains('progress.observeProvider(fix.provider,verifiedAt)') -and $farm.Contains('progress.observeProvider(before.provider,SystemClock.elapsedRealtime())')
+    'Combined route read retains account planting and location gates' = $farm.Contains('observation.require(pid,checkpoint.account,plantingRequestedAt)') -and $gps.Contains('static RouteObservation routeObservation')
+}
+foreach ($entry in $checks.GetEnumerator()) { if (!$entry.Value) { throw $entry.Key } }
+Write-Output ('PASS: ' + $checks.Count + ' farm source contracts (not a live route test)')

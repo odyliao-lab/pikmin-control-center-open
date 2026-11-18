@@ -1,0 +1,208 @@
+// FILE android/content/SharedPreferences.java
+package android.content;
+import java.util.*;
+public class SharedPreferences {
+ public final Map<String,Object> values=new HashMap<>(); public boolean fail;public String failPhase="";
+ public String getString(String k,String d){return (String)values.getOrDefault(k,d);}
+ public int getInt(String k,int d){return (Integer)values.getOrDefault(k,d);}
+ public long getLong(String k,long d){return (Long)values.getOrDefault(k,d);}
+ public Editor edit(){return new Editor();}
+ public class Editor {
+  Map<String,Object> changes=new HashMap<>(); boolean clear;
+  public Editor putString(String k,String v){changes.put(k,v);return this;}
+  public Editor putInt(String k,int v){changes.put(k,v);return this;}
+  public Editor putLong(String k,long v){changes.put(k,v);return this;}
+  public Editor clear(){clear=true;return this;}
+  public boolean commit(){if(fail||(!failPhase.isEmpty()&&failPhase.equals(changes.get("phase"))))return false;if(clear)values.clear();values.putAll(changes);return true;}
+ }
+}
+// FILE android/content/Context.java
+package android.content;
+public class Context {
+ public final java.util.Map<String,SharedPreferences> stores=new java.util.HashMap<>();
+ public Context getApplicationContext(){return this;}
+ public SharedPreferences getSharedPreferences(String n,int mode){return stores.computeIfAbsent(n,k->new SharedPreferences());}
+ public android.content.pm.PackageManager getPackageManager(){return new android.content.pm.PackageManager();}
+ public android.content.pm.ApplicationInfo getApplicationInfo(){return new android.content.pm.ApplicationInfo();}
+ public <T>T getSystemService(Class<T> c){try{return c.newInstance();}catch(Exception e){throw new RuntimeException(e);}}
+}
+// FILE android/content/pm/PackageManager.java
+package android.content.pm;
+public class PackageManager {public static boolean allowed=true;public boolean canRequestPackageInstalls(){return allowed;}}
+// FILE android/content/pm/ApplicationInfo.java
+package android.content.pm;
+public class ApplicationInfo {public String sourceDir="installed-fixture.apk";}
+// FILE android/content/Intent.java
+package android.content;
+public class Intent {public Intent(Context c,Class<?> t){}public Intent putExtra(String k,boolean v){return this;}}
+// FILE android/os/SystemClock.java
+package android.os;
+public class SystemClock {public static long now;public static long elapsedRealtime(){return now;}}
+// FILE android/R.java
+package android;
+public class R {public static class drawable {public static int stat_sys_download_done=1;}}
+// FILE android/app/NotificationManager.java
+package android.app;
+public class NotificationManager {public static int IMPORTANCE_DEFAULT=1;public void createNotificationChannel(NotificationChannel c){}public void notify(int i,Notification n){}public void cancel(int i){}}
+// FILE android/app/NotificationChannel.java
+package android.app;
+public class NotificationChannel {public NotificationChannel(String a,String b,int c){}}
+// FILE android/app/PendingIntent.java
+package android.app;
+public class PendingIntent {public static int FLAG_UPDATE_CURRENT=1,FLAG_IMMUTABLE=2;public static PendingIntent getActivity(android.content.Context c,int i,android.content.Intent a,int f){return new PendingIntent();}}
+// FILE android/app/Notification.java
+package android.app;
+public class Notification {public static class Builder {public Builder(android.content.Context c,String s){}public Builder setSmallIcon(int i){return this;}public Builder setContentTitle(String s){return this;}public Builder setContentText(String s){return this;}public Builder setContentIntent(PendingIntent p){return this;}public Builder setAutoCancel(boolean b){return this;}public Notification build(){return new Notification();}}}
+// FILE dev/ody/pikmincontrol/FlowFixture.java
+package dev.ody.pikmincontrol;
+import android.content.*;
+import java.io.*;
+import java.util.zip.*;
+public class FlowFixture {
+ static int checks,installs,cores,downloads,restores;static long installed;static boolean ready,session,pause,corePending,preparing,prepareFail,coreFail,restoreFail,pairMismatch,filesMismatch,effectiveMismatch,runtimeMissing;
+ static String coreAction,digest="a";static File apk;
+ static void check(boolean b){checks++;if(!b)throw new AssertionError("check "+checks);}
+ static Context fresh()throws Exception {
+  installs=cores=downloads=restores=0;installed=171;ready=session=pause=corePending=preparing=prepareFail=coreFail=restoreFail=pairMismatch=filesMismatch=effectiveMismatch=runtimeMissing=false;coreAction="install";digest="a";
+  android.content.pm.PackageManager.allowed=true;Context c=new Context();UpdateStore.prefs(c).edit().putString("manifest","172:a").commit();
+  PhoneUpdateFlow.start(c,new UpdateInfo("172:a"));return c;
+ }
+ static void tick(Context c){android.os.SystemClock.now+=6000;PhoneUpdateFlow.advance(c);}
+ static void apkDone(Context c)throws Exception {installed=172;session=false;PhoneUpdateFlow.apkEnded(c);tick(c);check(PhoneUpdateFlow.phase(c).equals("core"));}
+ static void resetProcess()throws Exception {java.lang.reflect.Field f=PhoneUpdateFlow.class.getDeclaredField("nextCheck");f.setAccessible(true);f.setLong(null,0);}
+ public static void main(String[] args)throws Exception {
+  apk=File.createTempFile("flow-fixture-",".apk");try(ZipOutputStream z=new ZipOutputStream(new FileOutputStream(apk))){z.putNextEntry(new ZipEntry("assets/core.properties"));z.write("pair".getBytes());z.closeEntry();}
+  Context c=fresh();check(!pause);tick(c);check(downloads==1&&!pause);tick(c);check(installs==1&&session&&pause);check(PhoneUpdateFlow.holdRestore(c));
+  resetProcess();tick(c);check(installs==1&&PhoneUpdateFlow.status(c).equals("2/4 Android 正在處理安裝"));
+  UpdateStore.prefs(c).edit().putString("installer_status","請完成 Android 安裝確認").commit();
+  tick(c);check(installs==1&&PhoneUpdateFlow.status(c).equals("2/4 請完成 Android 安裝確認"));
+  apkDone(c);tick(c);check(cores==1&&PhoneUpdateFlow.phase(c).equals("core-intent"));
+  resetProcess();tick(c);check(PhoneUpdateFlow.action(c).equals("reboot")&&cores==1);tick(c);check(cores==1&&restores==0);
+  coreAction="open-game";tick(c);check(PhoneUpdateFlow.action(c).equals("open-game"));coreAction="review";tick(c);tick(c);
+  check(PhoneUpdateFlow.phase(c).equals("complete")&&restores==1&&!pause);
+  // Same core: verify and restore, no core installation/reboot.
+  c=fresh();ready=true;tick(c);apkDone(c);coreAction="ready";tick(c);check(cores==0&&PhoneUpdateFlow.phase(c).equals("complete"));
+  // Source permission is granted on return, no second consent or download required.
+  c=fresh();ready=true;android.content.pm.PackageManager.allowed=false;tick(c);check(PhoneUpdateFlow.action(c).equals("permission")&&installs==0&&!pause);
+  android.content.pm.PackageManager.allowed=true;tick(c);check(installs==1);
+  // Android cancellation restores old-version path; no automatic second session.
+  session=false;PhoneUpdateFlow.apkEnded(c);tick(c);check(!PhoneUpdateFlow.active(c)&&installs==1);
+  // Preparation failure before submission can be retried without ambiguity.
+  c=fresh();ready=true;prepareFail=true;tick(c);check(PhoneUpdateFlow.phase(c).equals("error")&&installs==0);
+  prepareFail=false;PhoneUpdateFlow.retry(c);tick(c);check(installs==1);
+  // Missing installer session after intent is NOT retried, including explicit recheck.
+  session=false;resetProcess();tick(c);check(PhoneUpdateFlow.phase(c).equals("error")&&installs==1);
+  PhoneUpdateFlow.retry(c);tick(c);check(installs==1);PhoneUpdateFlow.cancel(c);check(!PhoneUpdateFlow.active(c));
+  // A newer/different APK never inherits the previous target's consent.
+  c=fresh();ready=true;tick(c);installed=173;session=false;tick(c);check(PhoneUpdateFlow.phase(c).equals("error")&&cores==0);
+  c=fresh();ready=true;tick(c);installed=172;session=false;digest="wrong";tick(c);check(PhoneUpdateFlow.phase(c).equals("error")&&cores==0);
+  c=fresh();ready=true;tick(c);installed=172;session=false;pairMismatch=true;tick(c);check(PhoneUpdateFlow.phase(c).equals("error")&&cores==0);
+  // Remote metadata changes cannot change durable consent.
+  c=fresh();UpdateStore.prefs(c).edit().putString("manifest","173:b").commit();check(PhoneUpdateFlow.manifest(c).equals("172:a"));
+  // A click on a previously displayed release must not authorize a newer manifest.
+  PhoneUpdateFlow.cancel(c);
+  boolean staleConsent=false;
+  try{PhoneUpdateFlow.start(c,new UpdateInfo("172:a"));}catch(IOException expected){staleConsent=true;}
+  check(staleConsent&&!PhoneUpdateFlow.active(c)&&installs==0);
+  // A core side-effect failing after intent is never replayed.
+  c=fresh();ready=true;tick(c);apkDone(c);coreFail=true;tick(c);check(cores==1&&PhoneUpdateFlow.phase(c).equals("error"));
+  coreFail=false;PhoneUpdateFlow.retry(c);tick(c);check(cores==1&&PhoneUpdateFlow.phase(c).equals("error"));
+  // If the lower transaction proves staging succeeded, recheck reaches reboot without reinstall.
+  coreAction="reboot";corePending=true;PhoneUpdateFlow.retry(c);tick(c);check(cores==1&&PhoneUpdateFlow.action(c).equals("reboot"));
+  // Failed preferences commit prevents installation.
+  c=fresh();ready=true;c.getSharedPreferences("phone_update_flow",0).fail=true;tick(c);check(installs==0&&cores==0);
+  c=fresh();ready=true;c.getSharedPreferences("phone_update_flow",0).failPhase="apk-intent";tick(c);check(installs==0);
+  c=fresh();ready=true;tick(c);apkDone(c);c.getSharedPreferences("phone_update_flow",0).failPhase="core-intent";tick(c);check(cores==0);
+  c.getSharedPreferences("phone_update_flow",0).failPhase="";PhoneUpdateFlow.retry(c);tick(c);check(cores==1);
+  // Restore failure cannot claim success or re-install core.
+  c=fresh();ready=true;tick(c);apkDone(c);coreAction="ready";restoreFail=true;tick(c);check(PhoneUpdateFlow.phase(c).equals("restore")&&cores==0&&!PhoneUpdateFlow.holdRestore(c));
+  restoreFail=false;tick(c);check(PhoneUpdateFlow.phase(c).equals("complete"));
+  c=fresh();ready=true;tick(c);apkDone(c);coreAction="ready";c.getSharedPreferences("phone_update_flow",0).failPhase="complete";tick(c);check(!PhoneUpdateFlow.phase(c).equals("complete")&&cores==0);
+  // Cancel after APK replacement cannot discard the paired-core obligation.
+  c=fresh();ready=true;tick(c);apkDone(c);boolean denied=false;try{PhoneUpdateFlow.cancel(c);}catch(Exception e){denied=true;}check(denied&&PhoneUpdateFlow.active(c));
+  // A stale RESTORE/error record must not freeze an independently installed
+  // newer APK forever. Do not overwrite its original consent or send installs.
+  for(int guard=0;guard<8;guard++) {
+   c=fresh();installed=173;pause=true;coreAction="ready";
+   SharedPreferences old=c.getSharedPreferences("phone_update_flow",0);
+   old.edit().putString("phase","error").putString("resume","restore").putInt("core_code",115).putString("core_sha","old-proof").commit();
+   if(guard==1)session=true;if(guard==2)corePending=true;if(guard==3)preparing=true;
+   if(guard==4)filesMismatch=true;if(guard==5)effectiveMismatch=true;if(guard==6)runtimeMissing=true;
+   if(guard==7)old.failPhase="superseded";
+   tick(c);
+   check(installs==0&&cores==0&&downloads==0);
+   check(old.getLong("target",0)==172&&old.getInt("core_code",0)==115&&old.getString("core_sha","").equals("old-proof"));
+   check(old.getString("manifest","").equals("172:a"));
+   if(guard==0){check(PhoneUpdateFlow.phase(c).equals("superseded")&&!PhoneUpdateFlow.active(c)&&!pause&&restores==1);
+    check(old.getLong("successor_app",0)==173);}
+   else check(PhoneUpdateFlow.active(c)&&pause&&restores==0&&!PhoneUpdateFlow.phase(c).equals("superseded"));
+  }
+  // First setup has its own explicit installed-APK consent and shares the core coordinator.
+  c=fresh();PhoneUpdateFlow.cancel(c);coreAction="ready";
+  PhoneUpdateFlow.startSetup(c);String key=PhoneUpdateFlow.observationKey(c);
+  check(PhoneUpdateFlow.setup(c)&&PhoneUpdateFlow.active(c)&&!key.isEmpty());
+  resetProcess();android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);
+  check(PhoneUpdateFlow.phase(c).equals("complete")&&cores==0&&installs==0);
+  // A background review can never install a missing core.
+  c=fresh();PhoneUpdateFlow.cancel(c);PhoneUpdateFlow.startSetup(c);key=PhoneUpdateFlow.observationKey(c);
+  android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);check(cores==0&&PhoneUpdateFlow.phase(c).equals("core"));
+  // Preparation failure has no install intent; retry preserves consent.
+  prepareFail=true;tick(c);check(cores==0&&PhoneUpdateFlow.phase(c).equals("error")&&pause);
+  prepareFail=false;PhoneUpdateFlow.retry(c);tick(c);check(cores==1&&PhoneUpdateFlow.phase(c).equals("core-intent"));
+  boolean cannotCancel=false;try{PhoneUpdateFlow.cancel(c);}catch(Exception e){cannotCancel=true;}check(cannotCancel);
+  // Reboot is displayed but never executed/admitted by background observation.
+  android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);check(cores==1&&restores==0);
+  coreAction="review";android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);
+  android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);check(PhoneUpdateFlow.phase(c).equals("complete")&&cores==1);
+  // A replaced APK cannot inherit setup consent, including background verification.
+  c=fresh();PhoneUpdateFlow.cancel(c);PhoneUpdateFlow.startSetup(c);key=PhoneUpdateFlow.observationKey(c);coreAction="ready";digest="changed";
+  android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);check(!PhoneUpdateFlow.phase(c).equals("complete")&&cores==0&&restores==0);
+  // Cancelling an unsent setup permits a new consent; a prior observer is rejected.
+  c=fresh();PhoneUpdateFlow.cancel(c);PhoneUpdateFlow.startSetup(c);key=PhoneUpdateFlow.observationKey(c);PhoneUpdateFlow.cancel(c);
+  check(!PhoneUpdateFlow.active(c));PhoneUpdateFlow.startSetup(c);coreAction="ready";
+  android.os.SystemClock.now+=6000;PhoneUpdateFlow.observe(c,key);check(PhoneUpdateFlow.phase(c).equals("core")&&restores==0);
+  tick(c);check(PhoneUpdateFlow.phase(c).equals("complete"));
+  // Setup does not consume unbound installer/core transactions or failed durable consent.
+  for(int guard=0;guard<4;guard++){
+   c=fresh();PhoneUpdateFlow.cancel(c);if(guard==0)corePending=true;if(guard==1)session=true;if(guard==2)preparing=true;
+   if(guard==3)c.getSharedPreferences("phone_update_flow",0).fail=true;
+   boolean blocked=false;try{PhoneUpdateFlow.startSetup(c);}catch(Exception e){blocked=true;}check(blocked&&cores==0);
+  }
+  // An independently installed successor may retire only a proven old RESTORE,
+  // preserving the old setup consent, just like the established update path.
+  c=fresh();PhoneUpdateFlow.cancel(c);PhoneUpdateFlow.startSetup(c);
+  c.getSharedPreferences("phone_update_flow",0).edit().putString("phase","error").putString("resume","restore").commit();
+  installed=172;coreAction="ready";tick(c);
+  check(PhoneUpdateFlow.phase(c).equals("superseded")&&cores==0&&!PhoneUpdateFlow.active(c));
+  // A temporary restore wait automatically resumes, but the persistent wait budget is finite.
+  c=fresh();ready=true;tick(c);apkDone(c);coreAction="ready";restoreFail=true;
+  for(int n=0;n<30;n++)tick(c);
+  check(PhoneUpdateFlow.restoreExhausted(c)&&!PhoneUpdateFlow.observing(c)&&PhoneUpdateFlow.action(c).equals("retry"));
+  restoreFail=false;tick(c);check(PhoneUpdateFlow.phase(c).equals("restore")&&cores==0);
+  PhoneUpdateFlow.retry(c);tick(c);check(PhoneUpdateFlow.phase(c).equals("complete")&&cores==0);
+  // Only an explicit cancellation ends a download; other errors remain retryable.
+  c=fresh();PhoneUpdateFlow.downloadCancelled(c);check(!PhoneUpdateFlow.active(c)&&PhoneUpdateFlow.phase(c).equals("cancelled")&&installs==0&&!pause);
+  c=fresh();PhoneUpdateFlow.failure(c,new java.net.SocketTimeoutException("timeout"));check(PhoneUpdateFlow.active(c)&&PhoneUpdateFlow.phase(c).equals("error"));
+  PhoneUpdateFlow.retry(c);tick(c);check(downloads==1);
+  // Cancellation notification cannot dismiss an already admitted APK session.
+  c=fresh();ready=true;tick(c);PhoneUpdateFlow.downloadCancelled(c);check(PhoneUpdateFlow.phase(c).equals("apk-intent")&&session);
+  // Integrity failures during RESTORE must still stop, not become automatic waits.
+  c=fresh();ready=true;tick(c);apkDone(c);coreAction="ready";restoreFail=true;tick(c);filesMismatch=true;tick(c);
+  check(PhoneUpdateFlow.phase(c).equals("error")&&cores==0);
+  System.out.println("PASS PhoneUpdateFlow: "+checks+" real-coordinator/fake Android-I/O checks; NOT device installer/reboot validation");
+ }
+}
+class MainActivity {}
+class SetupActivity {}
+class UpdateInfo {final long code;final String sha256;UpdateInfo(String s){String[] f=s.split(":");code=Long.parseLong(f[0]);sha256=f[1];}boolean newerThan(long n){return code>n;}}
+class UpdateStore {static long installed(Context c){return FlowFixture.installed;}static SharedPreferences prefs(Context c){return c.getSharedPreferences("updates",0);}}
+class UpdateController {static boolean busy(){return false;}static boolean ready(Context c){return FlowFixture.ready;}static void download(Context c){FlowFixture.downloads++;FlowFixture.ready=true;}static void discardPartial(Context c){}static File apk(Context c){return FlowFixture.apk;}static void verify(Context c,File f,UpdateInfo i){}}
+class UpdateClient {static String digest(File f){return FlowFixture.digest;}}
+class UpdateInstaller {static boolean preparing;static boolean pending(Context c){return FlowFixture.session;}static String pendingStatus(Context c){return UpdateStore.prefs(c).getString("installer_status","Android 正在處理安裝");}static void begin(Context c)throws Exception {if(FlowFixture.prepareFail)throw new IOException("prepare failed");FlowFixture.pause=true;PhoneUpdateFlow.apkIntent(c);FlowFixture.installs++;FlowFixture.session=true;}}
+class CorePair {int code=115;long app=FlowFixture.installed;String sha="core";CorePair(String s){}}
+class CoreUpdater {static boolean pending(Context c){return FlowFixture.corePending;}static CorePair readPair(Context c,String s){CorePair p=new CorePair(s);if(FlowFixture.pairMismatch)p.sha="wrong";return p;}static CorePair pair(Context c){CorePair p=readPair(c,"");if(FlowFixture.effectiveMismatch)p.sha="rollback";return p;}static void requireFiles(Context c,CorePair p)throws Exception {if(FlowFixture.filesMismatch)throw new IOException("file mismatch");}static String runtimePid(Context c,CorePair p){return FlowFixture.coreAction.equals("ready")&&!FlowFixture.runtimeMissing?"123":"";}static void review(Context c){FlowFixture.corePending=false;FlowFixture.coreAction="ready";}}
+class CoreInstallWizard {static boolean preparing(Context c){return FlowFixture.preparing;}static void preparing(Context c,boolean b){FlowFixture.preparing=b;}static void cancelPreparation(Context c){FlowFixture.preparing=false;}static String action(Context c){return FlowFixture.coreAction;}static void closeGameAndInstall(Context c)throws Exception {FlowFixture.cores++;if(FlowFixture.coreFail)throw new IOException("intent interrupted");FlowFixture.corePending=true;FlowFixture.coreAction="reboot";}}
+class SetupDeployment {static boolean pending(Context c){return false;}}
+class SetupBundle {static byte[] read(InputStream in,int max)throws Exception {return in.readAllBytes();}}
+class UpdatePreparation {static boolean blocking(Context c){return FlowFixture.pause;}static void prepareCore(Context c){}static void prepareSetupCore(Context c)throws Exception {FlowFixture.pause=true;if(FlowFixture.prepareFail)throw new IOException("setup preparation failed");}static void cancel(Context c){FlowFixture.pause=false;}static boolean restore(Context c){if(PhoneUpdateFlow.holdRestore(c))throw new AssertionError("premature restore");if(FlowFixture.restoreFail)return false;FlowFixture.pause=false;return true;}static String status(Context c){return "restore pending";}}
+class SettingsRestoreJob {static void schedule(Context c){}static boolean restoreForPid(Context c,String pid){FlowFixture.restores++;return true;}}

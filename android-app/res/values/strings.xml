@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="return_reward_service_description">僅在 Pikmin Bloom 前景時協助處理返程獎勵；預設不執行自動點擊。</string>
+</resources>

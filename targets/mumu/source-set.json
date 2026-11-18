@@ -1,0 +1,2058 @@
+{
+  "appCode": 595,
+  "resources": [
+    {
+      "path": "android-app/res/drawable/ic_app.xml",
+      "name": "drawable/ic_app.xml"
+    },
+    {
+      "path": "android-app/res/drawable/nav_dispatch.xml",
+      "name": "drawable/nav_dispatch.xml"
+    },
+    {
+      "path": "android-app/res/drawable/nav_nectar.xml",
+      "name": "drawable/nav_nectar.xml"
+    },
+    {
+      "path": "android-app/res/drawable/nav_overview.xml",
+      "name": "drawable/nav_overview.xml"
+    },
+    {
+      "path": "android-app/res/drawable/nav_return.xml",
+      "name": "drawable/nav_return.xml"
+    },
+    {
+      "path": "android-app/res/drawable/nav_steps.xml",
+      "name": "drawable/nav_steps.xml"
+    },
+    {
+      "path": "android-app/res/drawable/nav_system.xml",
+      "name": "drawable/nav_system.xml"
+    },
+    {
+      "path": "android-app/res/values/colors.xml",
+      "name": "values/colors.xml"
+    },
+    {
+      "path": "android-app/res/values/strings.xml",
+      "name": "values/strings.xml"
+    },
+    {
+      "path": "android-app/res/values/styles.xml",
+      "name": "values/styles.xml"
+    },
+    {
+      "path": "android-app/res/values-night/colors.xml",
+      "name": "values-night/colors.xml"
+    },
+    {
+      "path": "android-app/res/values-night/styles.xml",
+      "name": "values-night/styles.xml"
+    },
+    {
+      "path": "android-app/res/xml/return_reward_accessibility.xml",
+      "name": "xml/return_reward_accessibility.xml"
+    }
+  ],
+  "schema": 1,
+  "coreCode": 900178,
+  "appVersion": "0.30.7-mumu348",
+  "package": "dev.ody.pikmincontrol.mumu",
+  "java": [
+    {
+      "name": "EmulatorDeadPlantingRecovery.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDeadPlantingRecovery.java"
+    },
+    {
+      "name": "AlertPolicy.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/AlertPolicy.java"
+    },
+    {
+      "name": "AppButtonStyle.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/AppButtonStyle.java"
+    },
+    {
+      "name": "AutomationAlerts.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/AutomationAlerts.java"
+    },
+    {
+      "name": "AutomationJournal.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutomationJournal.java"
+    },
+    {
+      "name": "AutomationPreferences.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/AutomationPreferences.java"
+    },
+    {
+      "name": "BatchArrivalProof.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/BatchArrivalProof.java"
+    },
+    {
+      "name": "BatchRecovery.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/BatchRecovery.java"
+    },
+    {
+      "name": "BatchRecoveryGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/BatchRecoveryGateway.java"
+    },
+    {
+      "name": "BatchRetry.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/BatchRetry.java"
+    },
+    {
+      "name": "BatchSites.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/BatchSites.java"
+    },
+    {
+      "name": "BatchUiSelection.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/BatchUiSelection.java"
+    },
+    {
+      "name": "BootReceiver.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/BootReceiver.java"
+    },
+    {
+      "name": "BoundedCommand.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/BoundedCommand.java"
+    },
+    {
+      "name": "CheckpointStore.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CheckpointStore.java"
+    },
+    {
+      "name": "CollectionMonitorService.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CollectionMonitorService.java"
+    },
+    {
+      "name": "CollectionObservation.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CollectionObservation.java"
+    },
+    {
+      "name": "CollectionPreference.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CollectionPreference.java"
+    },
+    {
+      "name": "ControlNotifications.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ControlNotifications.java"
+    },
+    {
+      "name": "ControlSettings.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ControlSettings.java"
+    },
+    {
+      "name": "CopyModeState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CopyModeState.java"
+    },
+    {
+      "name": "CoreBootstrapFailure.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreBootstrapFailure.java"
+    },
+    {
+      "name": "CoreCapabilities.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreCapabilities.java"
+    },
+    {
+      "name": "CoreFreshFlow.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CoreFreshFlow.java"
+    },
+    {
+      "name": "CoreFreshInstall.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreFreshInstall.java"
+    },
+    {
+      "name": "CoreInstallSnapshot.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreInstallSnapshot.java"
+    },
+    {
+      "name": "CoreInstallWizard.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreInstallWizard.java"
+    },
+    {
+      "name": "CoreMigrationBackup.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreMigrationBackup.java"
+    },
+    {
+      "name": "CoreMigrationFlow.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CoreMigrationFlow.java"
+    },
+    {
+      "name": "CoreMigrationRootPort.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreMigrationRootPort.java"
+    },
+    {
+      "name": "CoreModuleProof.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreModuleProof.java"
+    },
+    {
+      "name": "CorePair.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CorePair.java"
+    },
+    {
+      "name": "CorePanelState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CorePanelState.java"
+    },
+    {
+      "name": "CoreRollbackCatalog.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreRollbackCatalog.java"
+    },
+    {
+      "name": "CoreStoredVersion.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CoreStoredVersion.java"
+    },
+    {
+      "name": "CoreSuccessorFlow.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CoreSuccessorFlow.java"
+    },
+    {
+      "name": "CoreUpdater.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/CoreUpdater.java"
+    },
+    {
+      "name": "CoreWizardPolicy.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/CoreWizardPolicy.java"
+    },
+    {
+      "name": "DiagnosticsExporter.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/DiagnosticsExporter.java"
+    },
+    {
+      "name": "DispatchBatchService.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/DispatchBatchService.java"
+    },
+    {
+      "name": "DispatchConfirmation.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/DispatchConfirmation.java"
+    },
+    {
+      "name": "DispatchOverlay.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/DispatchOverlay.java"
+    },
+    {
+      "name": "DispatchPreflight.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/DispatchPreflight.java"
+    },
+    {
+      "name": "DispatchProbeGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/DispatchProbeGateway.java"
+    },
+    {
+      "name": "DisplayReadCoalescer.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/DisplayReadCoalescer.java"
+    },
+    {
+      "name": "DisplayRefreshGate.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/DisplayRefreshGate.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyAcceptance.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyAcceptance.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyBatchPort.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyBatchPort.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyConfigured.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyConfigured.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyFacts.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyFacts.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyLoop.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyLoop.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyPort.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyPort.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyRuntime.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyRuntime.java"
+    },
+    {
+      "name": "EmulatorAndroidDailySchedule.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailySchedule.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyStore.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyStore.java"
+    },
+    {
+      "name": "EmulatorAndroidDailyTick.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDailyTick.java"
+    },
+    {
+      "name": "EmulatorAndroidDevelopmentBatch.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorAndroidDevelopmentBatch.java"
+    },
+    {
+      "name": "EmulatorApplication.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorApplication.java"
+    },
+    {
+      "name": "EmulatorBootstrapActivity.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorBootstrapActivity.java"
+    },
+    {
+      "name": "EmulatorBootstrapProof.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorBootstrapProof.java"
+    },
+    {
+      "name": "EmulatorCityPlantingLabels.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorCityPlantingLabels.java"
+    },
+    {
+      "name": "EmulatorClosedPlantingRound.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorClosedPlantingRound.java"
+    },
+    {
+      "name": "EmulatorDailyAcceptanceActivity.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyAcceptanceActivity.java"
+    },
+    {
+      "name": "EmulatorDailyAcceptanceEvidence.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyAcceptanceEvidence.java"
+    },
+    {
+      "name": "EmulatorDailyArrivalGuard.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyArrivalGuard.java"
+    },
+    {
+      "name": "EmulatorDailyBatchDay.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchDay.java"
+    },
+    {
+      "name": "EmulatorDailyBatchInventory.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchInventory.java"
+    },
+    {
+      "name": "EmulatorDailyBatchObserved.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchObserved.java"
+    },
+    {
+      "name": "EmulatorDailyBatchOutcome.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchOutcome.java"
+    },
+    {
+      "name": "EmulatorDailyBatchReceipt.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchReceipt.java"
+    },
+    {
+      "name": "EmulatorDailyBatchRejection.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchRejection.java"
+    },
+    {
+      "name": "EmulatorDailyBatchScan.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchScan.java"
+    },
+    {
+      "name": "EmulatorDailyBatchScanScope.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchScanScope.java"
+    },
+    {
+      "name": "EmulatorDailyBatchSelection.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchSelection.java"
+    },
+    {
+      "name": "EmulatorDailyBatchWork.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyBatchWork.java"
+    },
+    {
+      "name": "EmulatorDailyCapturedExpiry.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyCapturedExpiry.java"
+    },
+    {
+      "name": "EmulatorDailyConfiguration.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyConfiguration.java"
+    },
+    {
+      "name": "EmulatorDailyConsumptionRefresh.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyConsumptionRefresh.java"
+    },
+    {
+      "name": "EmulatorDailyCore.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyCore.java"
+    },
+    {
+      "name": "EmulatorDailyFileStore.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyFileStore.java"
+    },
+    {
+      "name": "EmulatorDailyLoop.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyLoop.java"
+    },
+    {
+      "name": "EmulatorDailyPlan.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyPlan.java"
+    },
+    {
+      "name": "EmulatorDailyPlantingProgress.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyPlantingProgress.java"
+    },
+    {
+      "name": "EmulatorDailyProviderRecheck.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyProviderRecheck.java"
+    },
+    {
+      "name": "EmulatorDailyResources.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyResources.java"
+    },
+    {
+      "name": "EmulatorDailyRouteClosure.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyRouteClosure.java"
+    },
+    {
+      "name": "EmulatorDailyRouteLibrary.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyRouteLibrary.java"
+    },
+    {
+      "name": "EmulatorDailyRouteWork.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyRouteWork.java"
+    },
+    {
+      "name": "EmulatorDailyRunner.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyRunner.java"
+    },
+    {
+      "name": "EmulatorDailySchedule.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailySchedule.java"
+    },
+    {
+      "name": "EmulatorDailyScheduleActivity.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyScheduleActivity.java"
+    },
+    {
+      "name": "EmulatorDailyService.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyService.java"
+    },
+    {
+      "name": "EmulatorDailyServiceControl.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyServiceControl.java"
+    },
+    {
+      "name": "EmulatorDailySessionIdentity.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailySessionIdentity.java"
+    },
+    {
+      "name": "EmulatorDailyStartFailure.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyStartFailure.java"
+    },
+    {
+      "name": "EmulatorDailyStatusFrameOrder.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyStatusFrameOrder.java"
+    },
+    {
+      "name": "EmulatorDailyStatusPresenter.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyStatusPresenter.java"
+    },
+    {
+      "name": "EmulatorDailyStopGate.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyStopGate.java"
+    },
+    {
+      "name": "EmulatorDailySupportWindow.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailySupportWindow.java"
+    },
+    {
+      "name": "EmulatorDailyUiCommands.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyUiCommands.java"
+    },
+    {
+      "name": "EmulatorDailyUiMatcher.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyUiMatcher.java"
+    },
+    {
+      "name": "EmulatorDailyUiRecovery.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyUiRecovery.java"
+    },
+    {
+      "name": "EmulatorDailyUiStore.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyUiStore.java"
+    },
+    {
+      "name": "EmulatorDailyWalkBaseline.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyWalkBaseline.java"
+    },
+    {
+      "name": "EmulatorDailyWalkBudget.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDailyWalkBudget.java"
+    },
+    {
+      "name": "EmulatorDevelopmentBatch.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDevelopmentBatch.java"
+    },
+    {
+      "name": "EmulatorDevelopmentBatchActivity.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDevelopmentBatchActivity.java"
+    },
+    {
+      "name": "EmulatorDevelopmentBatchRun.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorDevelopmentBatchRun.java"
+    },
+    {
+      "name": "EmulatorFileJournal.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorFileJournal.java"
+    },
+    {
+      "name": "EmulatorGameCounterDiagnostic.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGameCounterDiagnostic.java"
+    },
+    {
+      "name": "EmulatorGameDailySteps.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGameDailySteps.java"
+    },
+    {
+      "name": "EmulatorGameDailyStepsGateway.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGameDailyStepsGateway.java"
+    },
+    {
+      "name": "EmulatorGpsClock.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsClock.java"
+    },
+    {
+      "name": "EmulatorGpsDiagnostics.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsDiagnostics.java"
+    },
+    {
+      "name": "EmulatorGpsFence.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsFence.java"
+    },
+    {
+      "name": "EmulatorGpsFenceCoordinator.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsFenceCoordinator.java"
+    },
+    {
+      "name": "EmulatorGpsFenceMaterial.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsFenceMaterial.java"
+    },
+    {
+      "name": "EmulatorGpsFenceSession.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsFenceSession.java"
+    },
+    {
+      "name": "EmulatorGpsHandoff.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsHandoff.java"
+    },
+    {
+      "name": "EmulatorGpsLifecycle.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsLifecycle.java"
+    },
+    {
+      "name": "EmulatorGpsRequests.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsRequests.java"
+    },
+    {
+      "name": "EmulatorGpsShellFence.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorGpsShellFence.java"
+    },
+    {
+      "name": "EmulatorHcCertificate.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorHcCertificate.java"
+    },
+    {
+      "name": "EmulatorJoystickSpeed.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorJoystickSpeed.java"
+    },
+    {
+      "name": "EmulatorNearbySettings.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorNearbySettings.java"
+    },
+    {
+      "name": "EmulatorNurseryBudget.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorNurseryBudget.java"
+    },
+    {
+      "name": "EmulatorObserverMaterial.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorObserverMaterial.java"
+    },
+    {
+      "name": "EmulatorObserverSession.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorObserverSession.java"
+    },
+    {
+      "name": "EmulatorOrderedRouteDraft.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorOrderedRouteDraft.java"
+    },
+    {
+      "name": "EmulatorOwnedPetalGateway.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorOwnedPetalGateway.java"
+    },
+    {
+      "name": "EmulatorOwnedPetalReader.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorOwnedPetalReader.java"
+    },
+    {
+      "name": "EmulatorOwnedStockObservation.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorOwnedStockObservation.java"
+    },
+    {
+      "name": "EmulatorPetalRotation.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorPetalRotation.java"
+    },
+    {
+      "name": "EmulatorPetalRouteHandoff.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorPetalRouteHandoff.java"
+    },
+    {
+      "name": "EmulatorPlantingStatusRead.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorPlantingStatusRead.java"
+    },
+    {
+      "name": "EmulatorRewardChoice.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRewardChoice.java"
+    },
+    {
+      "name": "EmulatorRootObserver.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRootObserver.java"
+    },
+    {
+      "name": "EmulatorRouteFixBuffer.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRouteFixBuffer.java"
+    },
+    {
+      "name": "EmulatorRouteFixListener.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRouteFixListener.java"
+    },
+    {
+      "name": "EmulatorRouteGuard.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRouteGuard.java"
+    },
+    {
+      "name": "EmulatorRouteRemainder.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRouteRemainder.java"
+    },
+    {
+      "name": "EmulatorRouteRuntime.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRouteRuntime.java"
+    },
+    {
+      "name": "EmulatorRunnerCounterGateway.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRunnerCounterGateway.java"
+    },
+    {
+      "name": "EmulatorRuntime.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorRuntime.java"
+    },
+    {
+      "name": "EmulatorSavedBatchObservation.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedBatchObservation.java"
+    },
+    {
+      "name": "EmulatorSavedBatchOrder.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedBatchOrder.java"
+    },
+    {
+      "name": "EmulatorSavedBatchPreparation.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedBatchPreparation.java"
+    },
+    {
+      "name": "EmulatorSavedDailyActivity.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedDailyActivity.java"
+    },
+    {
+      "name": "EmulatorSavedDailyRead.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedDailyRead.java"
+    },
+    {
+      "name": "EmulatorSavedDailyRuntime.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedDailyRuntime.java"
+    },
+    {
+      "name": "EmulatorSavedDailyService.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedDailyService.java"
+    },
+    {
+      "name": "EmulatorSavedDailyStore.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedDailyStore.java"
+    },
+    {
+      "name": "EmulatorSavedDailyUi.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedDailyUi.java"
+    },
+    {
+      "name": "EmulatorSavedJoystickPort.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedJoystickPort.java"
+    },
+    {
+      "name": "EmulatorSavedJoystickProtocol.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedJoystickProtocol.java"
+    },
+    {
+      "name": "EmulatorSavedReadDiagnostic.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedReadDiagnostic.java"
+    },
+    {
+      "name": "EmulatorSavedRoutePlan.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedRoutePlan.java"
+    },
+    {
+      "name": "EmulatorSavedRouteRotation.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedRouteRotation.java"
+    },
+    {
+      "name": "EmulatorSavedUiDrain.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorSavedUiDrain.java"
+    },
+    {
+      "name": "EmulatorStatusReplyWindow.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorStatusReplyWindow.java"
+    },
+    {
+      "name": "EmulatorStepBootPolicy.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorStepBootPolicy.java"
+    },
+    {
+      "name": "EmulatorUnstartedRouteOutcome.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorUnstartedRouteOutcome.java"
+    },
+    {
+      "name": "EmulatorWalkFrame.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorWalkFrame.java"
+    },
+    {
+      "name": "EnvironmentGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/EnvironmentGateway.java"
+    },
+    {
+      "name": "EnvironmentReport.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/EnvironmentReport.java"
+    },
+    {
+      "name": "FarmLocation.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FarmLocation.java"
+    },
+    {
+      "name": "FarmRecovery.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FarmRecovery.java"
+    },
+    {
+      "name": "FarmReports.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FarmReports.java"
+    },
+    {
+      "name": "FarmRunReport.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FarmRunReport.java"
+    },
+    {
+      "name": "FarmStartup.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FarmStartup.java"
+    },
+    {
+      "name": "FarmUi.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FarmUi.java"
+    },
+    {
+      "name": "FeedingCatalogue.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FeedingCatalogue.java"
+    },
+    {
+      "name": "FeedingConfig.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FeedingConfig.java"
+    },
+    {
+      "name": "FeedingGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FeedingGateway.java"
+    },
+    {
+      "name": "FeedingHistory.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FeedingHistory.java"
+    },
+    {
+      "name": "FeedingPanel.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FeedingPanel.java"
+    },
+    {
+      "name": "FeedingPolicy.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FeedingPolicy.java"
+    },
+    {
+      "name": "FeedingSavedState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FeedingSavedState.java"
+    },
+    {
+      "name": "FeedingSnapshot.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FeedingSnapshot.java"
+    },
+    {
+      "name": "FeedingSquadDiagnostics.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FeedingSquadDiagnostics.java"
+    },
+    {
+      "name": "FlowerFarmDraft.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FlowerFarmDraft.java"
+    },
+    {
+      "name": "FlowerFarmEstimate.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/FlowerFarmEstimate.java"
+    },
+    {
+      "name": "FlowerFarmService.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/FlowerFarmService.java"
+    },
+    {
+      "name": "GamePidRecoveryLaunch.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/GamePidRecoveryLaunch.java"
+    },
+    {
+      "name": "GamePidRecoveryPolicy.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/GamePidRecoveryPolicy.java"
+    },
+    {
+      "name": "GamePidRecoveryProof.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/GamePidRecoveryProof.java"
+    },
+    {
+      "name": "GamePidRecoveryService.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/GamePidRecoveryService.java"
+    },
+    {
+      "name": "GpsModuleGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/GpsModuleGateway.java"
+    },
+    {
+      "name": "GpsWorkLock.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/GpsWorkLock.java"
+    },
+    {
+      "name": "HarvestRoute.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/HarvestRoute.java"
+    },
+    {
+      "name": "HarvestRouteProgress.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/HarvestRouteProgress.java"
+    },
+    {
+      "name": "JoystickAdapter.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/JoystickAdapter.java"
+    },
+    {
+      "name": "JoystickReadiness.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/JoystickReadiness.java"
+    },
+    {
+      "name": "JoystickStartup.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/JoystickStartup.java"
+    },
+    {
+      "name": "JoystickStartupJob.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/JoystickStartupJob.java"
+    },
+    {
+      "name": "JoystickStartupPolicy.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/JoystickStartupPolicy.java"
+    },
+    {
+      "name": "JoystickStartupService.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/JoystickStartupService.java"
+    },
+    {
+      "name": "LegacyGpsSnapshot.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/LegacyGpsSnapshot.java"
+    },
+    {
+      "name": "LogActivity.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/LogActivity.java"
+    },
+    {
+      "name": "MainActivity.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/MainActivity.java"
+    },
+    {
+      "name": "MainNavigation.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/MainNavigation.java"
+    },
+    {
+      "name": "MonitorSchedule.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/MonitorSchedule.java"
+    },
+    {
+      "name": "NearbyCapability.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NearbyCapability.java"
+    },
+    {
+      "name": "NearbyGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/NearbyGateway.java"
+    },
+    {
+      "name": "NearbyGuard.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NearbyGuard.java"
+    },
+    {
+      "name": "NearbyKinds.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NearbyKinds.java"
+    },
+    {
+      "name": "NearbyPreference.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NearbyPreference.java"
+    },
+    {
+      "name": "NearbyState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NearbyState.java"
+    },
+    {
+      "name": "NearbyWorkState.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/NearbyWorkState.java"
+    },
+    {
+      "name": "NectarModuleGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/NectarModuleGateway.java"
+    },
+    {
+      "name": "NoticePresentation.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/NoticePresentation.java"
+    },
+    {
+      "name": "PlanterGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/PlanterGateway.java"
+    },
+    {
+      "name": "PlanterRecovery.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/PlanterRecovery.java"
+    },
+    {
+      "name": "PlanterRecoveryUi.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/PlanterRecoveryUi.java"
+    },
+    {
+      "name": "PlanterSettings.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/PlanterSettings.java"
+    },
+    {
+      "name": "PlanterState.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/PlanterState.java"
+    },
+    {
+      "name": "PlanterSteps.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/PlanterSteps.java"
+    },
+    {
+      "name": "PlantingControlGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/PlantingControlGateway.java"
+    },
+    {
+      "name": "PlantingState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/PlantingState.java"
+    },
+    {
+      "name": "ProbeSnapshot.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ProbeSnapshot.java"
+    },
+    {
+      "name": "ReadinessGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/ReadinessGateway.java"
+    },
+    {
+      "name": "ReadinessModel.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/ReadinessModel.java"
+    },
+    {
+      "name": "ReadinessSample.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ReadinessSample.java"
+    },
+    {
+      "name": "ReadOnlyQueryPolicy.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ReadOnlyQueryPolicy.java"
+    },
+    {
+      "name": "ResourceGuard.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/ResourceGuard.java"
+    },
+    {
+      "name": "ResourceState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ResourceState.java"
+    },
+    {
+      "name": "ReturnedItemDetector.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ReturnedItemDetector.java"
+    },
+    {
+      "name": "ReturnRewardAccessibilityService.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ReturnRewardAccessibilityService.java"
+    },
+    {
+      "name": "ReturnRewardDetector.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/ReturnRewardDetector.java"
+    },
+    {
+      "name": "ReturnRewardModuleGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/ReturnRewardModuleGateway.java"
+    },
+    {
+      "name": "RootQueryStats.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/RootQueryStats.java"
+    },
+    {
+      "name": "RouteCleanupProof.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/RouteCleanupProof.java"
+    },
+    {
+      "name": "RouteDispatchDiagnostics.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/RouteDispatchDiagnostics.java"
+    },
+    {
+      "name": "RouteHarvestSummary.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/RouteHarvestSummary.java"
+    },
+    {
+      "name": "RouteLoopTiming.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/RouteLoopTiming.java"
+    },
+    {
+      "name": "RouteObservation.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/RouteObservation.java"
+    },
+    {
+      "name": "RouteSession.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/RouteSession.java"
+    },
+    {
+      "name": "RouteState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/RouteState.java"
+    },
+    {
+      "name": "SessionIdentity.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SessionIdentity.java"
+    },
+    {
+      "name": "SettingsRestoreJob.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SettingsRestoreJob.java"
+    },
+    {
+      "name": "SetupActivity.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SetupActivity.java"
+    },
+    {
+      "name": "SetupBundle.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SetupBundle.java"
+    },
+    {
+      "name": "SetupDeployment.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SetupDeployment.java"
+    },
+    {
+      "name": "SetupInput.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/SetupInput.java"
+    },
+    {
+      "name": "SetupReminder.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/SetupReminder.java"
+    },
+    {
+      "name": "SetupSnapshot.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SetupSnapshot.java"
+    },
+    {
+      "name": "SetupStore.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/SetupStore.java"
+    },
+    {
+      "name": "StepActivity.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepActivity.java"
+    },
+    {
+      "name": "StepAndroidStore.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepAndroidStore.java"
+    },
+    {
+      "name": "StepCatchUpPlanner.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepCatchUpPlanner.java"
+    },
+    {
+      "name": "StepCoordinator.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepCoordinator.java"
+    },
+    {
+      "name": "StepEngine.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepEngine.java"
+    },
+    {
+      "name": "StepHealthConnectProbe.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepHealthConnectProbe.java"
+    },
+    {
+      "name": "StepHealthGateway.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepHealthGateway.java"
+    },
+    {
+      "name": "StepHealthGatewayApi34.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepHealthGatewayApi34.java"
+    },
+    {
+      "name": "StepLedger.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepLedger.java"
+    },
+    {
+      "name": "StepOperations.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepOperations.java"
+    },
+    {
+      "name": "StepPanel.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepPanel.java"
+    },
+    {
+      "name": "StepPanelModel.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepPanelModel.java"
+    },
+    {
+      "name": "StepPermissionUsageActivity.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepPermissionUsageActivity.java"
+    },
+    {
+      "name": "StepPlan.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepPlan.java"
+    },
+    {
+      "name": "StepPorts.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepPorts.java"
+    },
+    {
+      "name": "StepService.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepService.java"
+    },
+    {
+      "name": "StepSettings.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepSettings.java"
+    },
+    {
+      "name": "StepState.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepState.java"
+    },
+    {
+      "name": "StepSyncJob.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StepSyncJob.java"
+    },
+    {
+      "name": "StepSystem.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepSystem.java"
+    },
+    {
+      "name": "StepUiAdapter.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepUiAdapter.java"
+    },
+    {
+      "name": "StepWorkLock.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepWorkLock.java"
+    },
+    {
+      "name": "StepWriterControl.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/StepWriterControl.java"
+    },
+    {
+      "name": "StopChecks.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/StopChecks.java"
+    },
+    {
+      "name": "UiSummary.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/UiSummary.java"
+    },
+    {
+      "name": "UpdateClient.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/UpdateClient.java"
+    },
+    {
+      "name": "UpdateController.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/UpdateController.java"
+    },
+    {
+      "name": "UpdateInfo.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/UpdateInfo.java"
+    },
+    {
+      "name": "UpdateInstallActivity.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/UpdateInstallActivity.java"
+    },
+    {
+      "name": "UpdateInstaller.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/UpdateInstaller.java"
+    },
+    {
+      "name": "UpdateStore.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/UpdateStore.java"
+    },
+    {
+      "name": "WorkCheckpoint.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/WorkCheckpoint.java"
+    },
+    {
+      "name": "WorkProgress.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/WorkProgress.java"
+    },
+    {
+      "name": "WorkStatus.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/WorkStatus.java"
+    },
+    {
+      "name": "EmulatorStoppedBatchReturns.java",
+      "kind": "mumu-only",
+      "path": "targets/mumu/android/mumu-only/EmulatorStoppedBatchReturns.java"
+    },
+    {
+      "name": "SeedPreviewState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/SeedPreviewState.java"
+    },
+    {
+      "name": "SeedPreviewGateway.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/SeedPreviewGateway.java"
+    },
+    {
+      "name": "SeedCollectionGateway.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/SeedCollectionGateway.java"
+    },
+    {
+      "name": "NectarStockGateway.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NectarStockGateway.java"
+    },
+    {
+      "name": "NectarStockDisplay.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/NectarStockDisplay.java"
+    },
+    {
+      "name": "SeedPreviewTarget.java",
+      "kind": "override",
+      "path": "targets/mumu/android/override/SeedPreviewTarget.java"
+    },
+    {
+      "name": "OwnerGameProcess.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/OwnerGameProcess.java"
+    },
+    {
+      "name": "AdultStateGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AdultStateGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "AdultDecorationGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AdultDecorationGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "GiftPreviewGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/GiftPreviewGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "PlanterDisplayGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/PlanterDisplayGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "ExpeditionDisplayGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/ExpeditionDisplayGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "DisplayOptionsGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/DisplayOptionsGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "DisplayOptionsState.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/DisplayOptionsState.java",
+      "kind": "shared"
+    },
+    {
+      "name": "HcCompatPolicy.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/HcCompatPolicy.java"
+    },
+    {
+      "name": "HcCompatState.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/HcCompatState.java"
+    },
+    {
+      "name": "HcCompatGateway.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/HcCompatGateway.java"
+    },
+    {
+      "name": "HcCompatCard.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/HcCompatCard.java"
+    },
+    {
+      "name": "AutoPetalCatalogue.java",
+      "kind": "shared",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutoPetalCatalogue.java"
+    },
+    {
+      "name": "AutoPetalConfig.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutoPetalConfig.java",
+      "kind": "shared"
+    },
+    {
+      "name": "AutoPetalGateway.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutoPetalGateway.java",
+      "kind": "shared"
+    },
+    {
+      "name": "AutoPetalPanel.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutoPetalPanel.java",
+      "kind": "shared"
+    },
+    {
+      "name": "AutoPetalState.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutoPetalState.java",
+      "kind": "shared"
+    },
+    {
+      "name": "AutoPetalInventory.java",
+      "path": "android-app/src/dev/ody/pikmincontrol/AutoPetalInventory.java",
+      "kind": "shared"
+    }
+  ],
+  "target": "mumu",
+  "automation": [
+    {
+      "name": "gps_carousel_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/gps_carousel_policy.h"
+    },
+    {
+      "name": "gps_carousel_adapter.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/gps_carousel_adapter.inc"
+    },
+    {
+      "name": "planter_pending_store.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planter_pending_store.h"
+    },
+    {
+      "name": "async_tsv_log.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/async_tsv_log.h"
+    },
+    {
+      "name": "atomic_projection.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/atomic_projection.h"
+    },
+    {
+      "name": "batch_target_probe.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/batch_target_probe.h"
+    },
+    {
+      "name": "bootstrap_retry.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/bootstrap_retry.h"
+    },
+    {
+      "name": "capability_state.h",
+      "kind": "shared",
+      "path": "targets/mumu/native/automation/capability_state.h"
+    },
+    {
+      "name": "daily_resources_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/daily_resources_policy.h"
+    },
+    {
+      "name": "daily_resources_publish.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/daily_resources_publish.h"
+    },
+    {
+      "name": "daily_resources.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/daily_resources.inc"
+    },
+    {
+      "name": "dispatch_budget.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/dispatch_budget.h"
+    },
+    {
+      "name": "dispatch_safety.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/dispatch_safety.h"
+    },
+    {
+      "name": "feeding_catalogue.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_catalogue.h"
+    },
+    {
+      "name": "feeding_completion.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_completion.h"
+    },
+    {
+      "name": "feeding_config.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_config.h"
+    },
+    {
+      "name": "feeding_coordinator.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_coordinator.inc"
+    },
+    {
+      "name": "feeding_observation.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_observation.h"
+    },
+    {
+      "name": "feeding_pending.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_pending.h"
+    },
+    {
+      "name": "feeding_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_policy.h"
+    },
+    {
+      "name": "feeding_probe.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_probe.inc"
+    },
+    {
+      "name": "feeding_read_request.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_read_request.h"
+    },
+    {
+      "name": "feeding_receipt.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_receipt.h"
+    },
+    {
+      "name": "feeding_rotation_rpc.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/feeding_rotation_rpc.inc"
+    },
+    {
+      "name": "feeding_rotation.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_rotation.h"
+    },
+    {
+      "name": "feeding_round.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_round.h"
+    },
+    {
+      "name": "feeding_rpc.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_rpc.inc"
+    },
+    {
+      "name": "feeding_squad_probe.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/feeding_squad_probe.inc"
+    },
+    {
+      "name": "game_daily_steps_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/game_daily_steps_policy.h"
+    },
+    {
+      "name": "game_daily_steps_publish.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/game_daily_steps_publish.h"
+    },
+    {
+      "name": "game_daily_steps.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/game_daily_steps.inc"
+    },
+    {
+      "name": "gps_observation_snapshot.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/gps_observation_snapshot.h"
+    },
+    {
+      "name": "independent_planting.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/independent_planting.h"
+    },
+    {
+      "name": "independent_stock_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/independent_stock_policy.h"
+    },
+    {
+      "name": "late_capture.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/late_capture.inc"
+    },
+    {
+      "name": "managed_gc.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/managed_gc.h"
+    },
+    {
+      "name": "nearby_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/nearby_policy.h"
+    },
+    {
+      "name": "nearby_safety.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/nearby_safety.h"
+    },
+    {
+      "name": "nectar_rpc.cpp",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/nectar_rpc.cpp"
+    },
+    {
+      "name": "owned_petal_stock.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/owned_petal_stock.inc"
+    },
+    {
+      "name": "planter_automation.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planter_automation.inc"
+    },
+    {
+      "name": "planter_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/planter_policy.h"
+    },
+    {
+      "name": "planter_recovery.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planter_recovery.h"
+    },
+    {
+      "name": "planter_recovery.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planter_recovery.inc"
+    },
+    {
+      "name": "planting_button_adapter.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_button_adapter.inc"
+    },
+    {
+      "name": "planting_button_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_button_policy.h"
+    },
+    {
+      "name": "planting_capture.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_capture.inc"
+    },
+    {
+      "name": "planting_catalogue_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_catalogue_policy.h"
+    },
+    {
+      "name": "planting_catalogue_query.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_catalogue_query.inc"
+    },
+    {
+      "name": "planting_catalogue.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_catalogue.inc"
+    },
+    {
+      "name": "planting_command_interlock.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_command_interlock.h"
+    },
+    {
+      "name": "planting_hooks.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_hooks.inc"
+    },
+    {
+      "name": "planting_observation.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_observation.inc"
+    },
+    {
+      "name": "planting_result.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_result.inc"
+    },
+    {
+      "name": "planting_reward_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_reward_policy.h"
+    },
+    {
+      "name": "planting_reward.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_reward.inc"
+    },
+    {
+      "name": "planting_selection.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_selection.inc"
+    },
+    {
+      "name": "planting_terminal_adapter.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_terminal_adapter.inc"
+    },
+    {
+      "name": "planting_transaction_policy.h",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_transaction_policy.h"
+    },
+    {
+      "name": "planting_transaction.inc",
+      "kind": "override",
+      "path": "targets/mumu/native/automation/planting_transaction.inc"
+    },
+    {
+      "name": "return_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/return_policy.h"
+    },
+    {
+      "name": "route_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/route_policy.h"
+    },
+    {
+      "name": "session_identity.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/session_identity.h"
+    },
+    {
+      "name": "async_dispatch_projection.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/async_dispatch_projection.h"
+    },
+    {
+      "name": "dispatch_projection_file.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/dispatch_projection_file.h"
+    },
+    {
+      "name": "nectar_intent_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/nectar_intent_policy.h"
+    },
+    {
+      "name": "nectar_intent_store.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/nectar_intent_store.h"
+    },
+    {
+      "name": "planting_continuation.h",
+      "path": "targets/mumu/native/automation/planting_continuation.h"
+    },
+    {
+      "name": "task_exclusion.h",
+      "path": "targets/mumu/native/automation/task_exclusion.h"
+    },
+    {
+      "name": "seed_preview.cpp",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/seed_preview.cpp"
+    },
+    {
+      "name": "seed_preview.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/seed_preview.h"
+    },
+    {
+      "name": "seed_preview_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/seed_preview_policy.h"
+    },
+    {
+      "name": "seed_preview_sha256.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/seed_preview_sha256.h"
+    },
+    {
+      "name": "seed_preview_profile.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/seed_preview_profile.h"
+    },
+    {
+      "name": "collection_insight_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/collection_insight_policy.h"
+    },
+    {
+      "name": "collection_insight_adapter.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/collection_insight_adapter.inc"
+    },
+    {
+      "name": "stock_display_policy.h",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/stock_display_policy.h"
+    },
+    {
+      "name": "stock_display_adapter.inc",
+      "kind": "shared",
+      "path": "native/automation/zygisk-module/cpp/stock_display_adapter.inc"
+    },
+    {
+      "path": "native/automation/zygisk-module/cpp/adult_display_policy.h",
+      "kind": "shared",
+      "name": "adult_display_policy.h"
+    },
+    {
+      "path": "native/automation/zygisk-module/cpp/adult_display_adapter.inc",
+      "kind": "shared",
+      "name": "adult_display_adapter.inc"
+    },
+    {
+      "name": "decoration_display_policy.h",
+      "path": "native/automation/zygisk-module/cpp/decoration_display_policy.h",
+      "kind": "shared"
+    },
+    {
+      "name": "decoration_display_adapter.inc",
+      "path": "native/automation/zygisk-module/cpp/decoration_display_adapter.inc",
+      "kind": "shared"
+    },
+    {
+      "name": "diagnostic_snapshot_file.h",
+      "path": "targets/mumu/native/automation/diagnostic_snapshot_file.h",
+      "kind": "mumu-only"
+    },
+    {
+      "name": "gift_display_policy.h",
+      "path": "native/automation/zygisk-module/cpp/gift_display_policy.h",
+      "kind": "shared"
+    },
+    {
+      "name": "gift_display_adapter.inc",
+      "path": "native/automation/zygisk-module/cpp/gift_display_adapter.inc",
+      "kind": "shared"
+    },
+    {
+      "name": "gift_dispatch_policy.h",
+      "path": "native/automation/zygisk-module/cpp/gift_dispatch_policy.h",
+      "kind": "shared"
+    },
+    {
+      "name": "planter_display_policy.h",
+      "path": "native/automation/zygisk-module/cpp/planter_display_policy.h",
+      "kind": "shared"
+    },
+    {
+      "name": "planter_display_adapter.inc",
+      "path": "native/automation/zygisk-module/cpp/planter_display_adapter.inc",
+      "kind": "shared"
+    },
+    {
+      "name": "expedition_display_policy.h",
+      "path": "native/automation/zygisk-module/cpp/expedition_display_policy.h",
+      "kind": "shared"
+    },
+    {
+      "name": "expedition_display_adapter.inc",
+      "path": "native/automation/zygisk-module/cpp/expedition_display_adapter.inc",
+      "kind": "shared"
+    },
+    {
+      "name": "auto_petal_switch.inc",
+      "path": "native/automation/zygisk-module/cpp/auto_petal_switch.inc"
+    },
+    {
+      "name": "auto_petal_policy.h",
+      "path": "native/automation/zygisk-module/cpp/auto_petal_policy.h"
+    },
+    {
+      "name": "auto_petal_inventory_policy.h",
+      "path": "native/automation/zygisk-module/cpp/auto_petal_inventory_policy.h"
+    }
+  ],
+  "coreVersion": "0.20.3",
+  "game": "157.0"
+}

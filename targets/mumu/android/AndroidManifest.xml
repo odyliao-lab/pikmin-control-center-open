@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dev.ody.pikmincontrol.mumu"
+    android:versionCode="595"
+    android:versionName="0.30.7-mumu348">
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="35" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Required on Android 13+ (API 33) to post any notification, including a
+         foreground service's. Without it the service still runs and reports
+         isForeground=true, but every notification is silently dropped; this
+         was traced on-device via `dumpsys notification` showing
+         numPostedByApp=0, numBlocked=48 despite the service believing it had
+         an active notification. Declaring it is necessary but not sufficient:
+         MainActivity must also request it at runtime (see onCreate()). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.health.READ_STEPS" />
+    <uses-permission android:name="android.permission.health.WRITE_STEPS" />
+    <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND" />
+    <queries>
+        <package android:name="com.nianticlabs.pikmin" />
+        <package android:name="com.thejhijuqoqy.bdujvrwdcajvzin" />
+    </queries>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+<application android:name="dev.ody.pikmincontrol.EmulatorApplication"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="false"
+        android:icon="@drawable/ic_app"
+        android:label="Pikmin 控制中心 · MuMu"
+        android:roundIcon="@drawable/ic_app"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="dev.ody.pikmincontrol.MainActivity" android:exported="true" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="dev.ody.pikmincontrol.LogActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name="dev.ody.pikmincontrol.SetupActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name="dev.ody.pikmincontrol.UpdateInstallActivity" android:exported="false" android:launchMode="singleTop" android:screenOrientation="portrait" />
+        <activity android:name="dev.ody.pikmincontrol.StepActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity
+            android:name="dev.ody.pikmincontrol.StepPermissionUsageActivity"
+            android:exported="true"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="dev.ody.pikmincontrol.BootReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_UNLOCKED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <service android:name="dev.ody.pikmincontrol.JoystickStartupJob" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="dev.ody.pikmincontrol.SettingsRestoreJob" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="dev.ody.pikmincontrol.StepSyncJob" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="dev.ody.pikmincontrol.StepService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User explicitly enabled a local Health Connect step-writing schedule that needs minute-scale timing; a persistent notification provides status and stop control, while JobScheduler remains recovery-only." />
+        </service>
+        <service android:name="dev.ody.pikmincontrol.JoystickStartupService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User opted-in boot restoration of an existing local GPS provider; root service startup and readiness checks with notification, cancellation and a 120-second deadline." />
+        </service>
+        <service android:name="dev.ody.pikmincontrol.GamePidRecoveryService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User opted in to monitor Pikmin process loss or fresh paired terminal core failure, with bounded recovery retries and a persistent notification; interrupted work is not replayed." />
+        </service>
+        <service android:name="dev.ody.pikmincontrol.CollectionMonitorService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Retain user-enabled collection, nearby dispatch and feeding choices, periodically restore saved controls when the paired game becomes ready, with a persistent notification; no game RPC replay." />
+        </service>
+            <service android:name="dev.ody.pikmincontrol.DispatchBatchService" android:exported="false" android:foregroundServiceType="dataSync" />
+            <service android:name="dev.ody.pikmincontrol.FlowerFarmService" android:exported="false" android:foregroundServiceType="dataSync|location" />
+        <service
+            android:name="dev.ody.pikmincontrol.ReturnRewardAccessibilityService"
+            android:description="@string/return_reward_service_description"
+            android:exported="false"
+            android:label="Pikmin 返程獎勵控制"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/return_reward_accessibility" />
+        </service>
+    <activity android:name="dev.ody.pikmincontrol.EmulatorBootstrapActivity" android:exported="false" android:screenOrientation="portrait" /><activity android:name="dev.ody.pikmincontrol.EmulatorDailyAcceptanceActivity" android:exported="false" android:screenOrientation="portrait" />
+<activity android:name="dev.ody.pikmincontrol.EmulatorDailyScheduleActivity" android:exported="false" android:screenOrientation="portrait" />
+<service android:name="dev.ody.pikmincontrol.EmulatorDailyService" android:exported="false" android:foregroundServiceType="specialUse">
+  <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Explicitly opted-in local MuMu daily runner with minute-scale guarded ticks and persistent status/stop notification; no automatic game or core login/load, unknown effects preserved without replay." />
+</service>
+<activity android:name="dev.ody.pikmincontrol.EmulatorDevelopmentBatchActivity" android:exported="false" android:screenOrientation="portrait" /><activity android:name="dev.ody.pikmincontrol.EmulatorSavedDailyActivity" android:exported="false" android:screenOrientation="portrait" /><service android:name="dev.ody.pikmincontrol.EmulatorSavedDailyService" android:exported="false" android:foregroundServiceType="specialUse"><property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User enabled saved JoyStick route scheduling and independent ordinary planting with a visible stop notification." /></service></application>
+</manifest>
+
+
+
